@@ -10,7 +10,7 @@
         <br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <div style="text-align:center;border;">
             <img src="{% static 'tjut/images/logo.png' %}" width="280" height="70" title="Engine">
-            <form method="post" action="{% url 'tjut:search' %}">
+            <form method="get" action="{% url 'tjut:search' %}">
             {% csrf_token %}
             <p>
                 <input type="text" name="content" id="recid" placeholder="Search here..." required />
