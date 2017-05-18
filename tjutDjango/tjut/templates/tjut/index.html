@@ -1,19 +1,30 @@
 {% load static %}
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-    <title>TJUT Search</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'tjut/css/index.css' %}" />
-</head>
-
-<body>
-
-<form class="form-wrapper cf" action="{% url 'tjut:search' %}" method="get">
-{% csrf_token %}
-  <input name='content' type="text" placeholder="Search here..." required>
-  <button type="submit">Search</button>
-</form>
-
-</body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Engine</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'tjut/css/index.css' %}" />
+    </head>
+    <body>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <div style="text-align:center;border;">
+            <img src="{% static 'tjut/images/logo.png' %}" width="280" height="70" title="Engine">
+            <form method="post" action="{% url 'tjut:search' %}">
+            {% csrf_token %}
+            <p>
+                <input type="text" name="content" id="recid" placeholder="Search here..." required />
+                <input type="submit" value="  Engine!  " id="subid"/>
+            </p>
+            </form>
+        </div>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/>
+        <div style="text-align:center;border;">
+            <p class="text_main">
+              More information on papers ©2017 All Rights Reserved
+              <!--More information on <a href="https://github.com/zhanglanqing/TinySearchEngine"  target="_blank"> Github </a>©2016 All Rights Reserved-->
+            </p>
+        </div>
+    </body>
 </html>
