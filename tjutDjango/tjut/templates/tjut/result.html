@@ -1,36 +1,58 @@
 {% load static %}
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-    <title>TJUT Search</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'tjut/css/result.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'tjut/css/bootstrap.min.css' %}" />
-</head>
+    <head>
+        <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″ />
+        <title>Engine</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'tjut/css/result.css' %}" />
+    </head>
+    <body>
 
-<body>
-<div>
-	<form class="form-wrapper cf" action="{% url 'tjut:search' %}" method="get">
-	{% csrf_token %}
-	  <input name='content' type="text" placeholder="Search here..." required>
-	  <button type="submit">Search</button>
-	</form>
-</div>
+            <img src="{% static 'tjut/images/logo.png' %}" width="140" height="35" title="Binoocle" style="float:left;">
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		{% load el_pagination_tags %}
-		{% paginate search_list %}
-		{% for item in search_list %}
-			<div class="span12">
-				<a href="{{ item.url }}"> {{ item.title|safe }} </a>
-				<p>
-				{{ item.content|safe }}
-				</p>
-			</div>
-		{% endfor %}
-	</div>
-	{% show_pages %}
-</div>
+            <form method="get" action="{% url 'tjut:search' %}">
+            {% csrf_token %}
+            <p>
+                <input type="text" value="{{ search_content }}" name="content" id="recid" placeholder="Search here..." required />
+                <input type="submit" value="  Engine!  " id="subid"/>
+            </p>
+            </form>
 
-</body>
+            <!--<a href="http://115.159.97.236:8080/Scheme" style="float:right;"><button>tiny-scheme-online-interpreter</button></a>-->
+
+            <hr/>
+            <br/><br/>
+
+                {% load el_pagination_tags %}
+				{% paginate search_list %}
+				{% for item in search_list %}
+                    <div class="null_er" style="float:left;">
+
+                    </div>
+                    <div class="box">
+                    	<a href= "{{ item.url }}" target="_blank"> {{ item.title|safe|truncatewords_html:20 }} </a>
+                        <p class="text_main">
+                            {{ item.content|safe|truncatewords_html:45 }}
+                        </p>
+                        <p class="green_linker">
+                            {{ item.url }}
+                        </p>
+                    </div>
+                {% endfor %}
+                <br/><br/><br/>
+                <div class="null_er" style="float:left;">
+
+                </div>
+                <div class="box">
+				{% show_pages %}
+                </div>
+                <div style="text-align:center;border;">
+                <p class="text_main">
+              	More information on papers ©2017 All Rights Reserved
+              	</p>
+                <!--<p class="text_main">
+                  More information on <a href="https://github.com/zhanglanqing/TinySearchEngine"  target="_blank"> Github </a>©2016 All Rights Reserved
+                </p>-->
+                </div>
+    </body>
 </html>
