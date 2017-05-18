@@ -1,0 +1,1 @@
+http://svn.apache.org/viewvc/lucene/pylucene/branches/pylucene_3_6/samples/
