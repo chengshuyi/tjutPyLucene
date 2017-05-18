@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TJUT Search</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'tjut/css/result.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'tjut/css/bootstrap.min.css' %}" />
+</head>
+
+<body>
+<div>
+	<form class="form-wrapper cf" action="{% url 'tjut:search' %}" method="get">
+	{% csrf_token %}
+	  <input name='content' type="text" placeholder="Search here..." required>
+	  <button type="submit">Search</button>
+	</form>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		{% load el_pagination_tags %}
+		{% paginate search_list %}
+		{% for item in search_list %}
+			<div class="span12">
+				<a href="{{ item.url }}"> {{ item.title|safe }} </a>
+				<p>
+				{{ item.content|safe }}
+				</p>
+			</div>
+		{% endfor %}
+	</div>
+	{% show_pages %}
+</div>
+
+</body>
+</html>

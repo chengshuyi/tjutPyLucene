@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TJUT Search</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'tjut/css/index.css' %}" />
+</head>
+
+<body>
+
+<form class="form-wrapper cf" action="{% url 'tjut:search' %}" method="get">
+{% csrf_token %}
+  <input name='content' type="text" placeholder="Search here..." required>
+  <button type="submit">Search</button>
+</form>
+
+</body>
+</html>
