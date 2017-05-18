@@ -104,7 +104,7 @@ class TjutSpider(scrapy.Spider):
             url = urljoin(response.url, link.get('href'))
             if url not in self.hashUrl:
                 #自己去重
-                yield scrapy.Request(, callback=self.parse)
+                yield scrapy.Request(url, callback=self.parse)
 
 
 def timeToTimeStamp(time_str):
