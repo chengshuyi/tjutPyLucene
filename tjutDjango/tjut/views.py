@@ -77,4 +77,4 @@ def search(request):
     #searcher.close()
     conn.close()
 
-    return render(request,'tjut/result.html',{'search_list':ret['search_list']})
+    return render(request,'tjut/result.html',{'search_list':ret['search_list'],'search_content':search_content})
