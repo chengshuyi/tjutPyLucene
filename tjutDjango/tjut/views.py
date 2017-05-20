@@ -4,7 +4,7 @@ import lucene
 import pymysql.cursors
 
 from lucene import getVMEnv,SimpleFragmenter,SimpleHTMLFormatter,QueryScorer,StringReader,QueryParser, IndexSearcher, ChineseAnalyzer, SimpleFSDirectory, File, VERSION, initVM, Version,Highlighter
-import jieba
+#import jieba
 
 initVM()
 STORE_DIR='.././data/index'
